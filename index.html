@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 
     <script src="script.js" defer></script>
 </head>
 <body>
 
     <h1>Inloggning</h1>
+    <!--    
     <ul id="userList"></ul>
-    
+
     <div>
         <input type="text" id="newUser">
-        <button id="saveUserBtn">Spara</button>
-    </div>
+        <button id="saveUserBtn"></button>
+    </div>-->
     
+    <form id="logIn">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="password">Lösenord:</label><br>
+        <input type="text" id="password" name="password">
+        <button id="loginUserBtn">Skicka</button>
+        <!--<input type="submit" value="Skicka">-->
+    </form>
+    <p id="serverMassage"></p>
+
 </body>
 </html>
