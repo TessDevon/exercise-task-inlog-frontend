@@ -1,10 +1,18 @@
-//let userList = document.getElementById("userList");
-//let newUser = document.getElementById("newUser");
+let userList = document.getElementById("userList");
 let userName = document.getElementById("name");
 let userPassword = document.getElementById("password");
 let loginUserBtn = document.getElementById("loginUserBtn");
 let logIn = document.getElementById("logIn");
 const serverMassage = document.getElementById("serverMassage");
+const saveUserBtn = document.getElementById("saveUserBtn");
+const savenewUser = document.getElementById("savenewUser");
+let newpassword = document.getElementById("newpassword");
+let newname = document.getElementById("newname");
+
+console.log(saveUserBtn);
+
+
+/*---------------------- Plockar upp de sparade användarna Skriver ut sparade användarna i listan ---------------------------------------------*/ 
 
 fetch("http://localhost:3000/users")
 .then(res => res.json())
@@ -12,17 +20,34 @@ fetch("http://localhost:3000/users")
     //console.log(data);
     printUsers(data);
 });
+
+function printUsers(users) {
+    // console.log(users);
+ 
+    userList.innerHTML = ""
+ 
+     users.map(user => {
+         let li = document.createElement("li")
+         li.id = user.id;
+         li.innerText = user.name;
+         userList.appendChild(li);
+     })
+ }
+
+
+/*----------------------Logga in användaren ------------------------------------------------------ */
+
 let userId;
 loginUserBtn.addEventListener("click", (event) => {
-
-    let sendUserData = {name: userName.value, password: userPassword.value};
     event.preventDefault();
-    logIn.reset();
+    let sendUserData = {name: userName.value, password: userPassword.value};
+    
+   // logIn.reset();
     serverMassage.innerHTML = ""
 
  //   console.log(user);
 
-    fetch("http://localhost:3000/users", {
+    fetch("http://localhost:3000/users/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -31,7 +56,6 @@ loginUserBtn.addEventListener("click", (event) => {
     })
     .then(res => res.json())
     .then(data => {
-       // printUsers(data);
         console.log(data);
         userId = data;
         console.log(userId)
@@ -59,27 +83,21 @@ loginUserBtn.addEventListener("click", (event) => {
         document.body.insertBefore(messegeP, currentDiv);
         */
     });
+    userName.value = ""
+    userPassword.value = ""
+    
 });
 
 //inlogBtn
 
-/*
-function printUsers(users) {
-   // console.log(users);
 
-   userList.innerHTML = ""
+/* ----------------------------------- Spara den nya användaren ---------------------------------------- */
 
-    users.map(user => {
-        let li = document.createElement("li")
-        li.id = user.id;
-        li.innerText = user.name;
-        userList.appendChild(li);
-    })
-}
-
-saveUserBtn.addEventListener("click", () => {
-    let user = {name: newUser.value};
- //   console.log(user);
+saveUserBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log("Called Handler");
+    let user = {name: newname.value, password:newpassword.value};
+    console.log(user);
 
     fetch("http://localhost:3000/users", {
         method: "POST",
@@ -93,5 +111,7 @@ saveUserBtn.addEventListener("click", () => {
         printUsers(data);
         console.log(data);
     });
+    newname.value = ""
+    newpassword.value = ""
 })
-*/
+

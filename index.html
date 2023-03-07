@@ -1,33 +1,41 @@
+
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-
+    <title>Document</title>
     <script src="script.js" defer></script>
 </head>
 <body>
-
-    <h1>Inloggning</h1>
-    <!--    
-    <ul id="userList"></ul>
-
-    <div>
-        <input type="text" id="newUser">
-        <button id="saveUserBtn"></button>
-    </div>-->
     
-    <form id="logIn">
+    <h1>Inloggning</h1>
+     
+    <ul id="userList"></ul>
+    
+    <div id="logIn">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br>
         <label for="password">Lösenord:</label><br>
         <input type="text" id="password" name="password">
         <button id="loginUserBtn">Skicka</button>
         <!--<input type="submit" value="Skicka">-->
-    </form>
+    </div>
+
     <p id="serverMassage"></p>
+    
+    <br><br>
+    
+    <div id="savenewUser">
+        <h3>Ny användare</h3>
+        <label for="newname">Name:</label><br>
+        <input type="text" id="newname" name="newname"><br>
+        <label for="newpassword">Lösenord:</label><br>
+        <input type="text" id="newpassword" name="newpassword">
+        <button id="saveUserBtn">Spara</button>
+        <!--<input type="submit" value="Skicka">-->
+    </div>
 
 </body>
 </html>
